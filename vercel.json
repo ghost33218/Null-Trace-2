@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm --filter @workspace/nulltrace run build",
+  "outputDirectory": "artifacts/nulltrace/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ],
+  "env": {
+    "BASE_PATH": "/",
+    "NODE_ENV": "production"
+  },
+  "build": {
+    "env": {
+      "BASE_PATH": "/",
+      "NODE_ENV": "production"
+    }
+  }
+}
