@@ -1,0 +1,63 @@
+import { Link, useLocation } from "wouter";
+import { 
+  Activity, 
+  AlertTriangle, 
+  BarChart2, 
+  Cpu, 
+  LayoutDashboard, 
+  MessageSquare, 
+  TerminalSquare
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+
+const navItems = [
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/incidents", label: "Incidents", icon: AlertTriangle },
+  { href: "/services", label: "Services", icon: Cpu },
+  { href: "/metrics", label: "Metrics", icon: BarChart2 },
+  { href: "/logs", label: "Logs", icon: TerminalSquare },
+  { href: "/ai-chat", label: "AI Assistant", icon: MessageSquare },
+];
+
+export function Sidebar() {
+  const [location] = useLocation();
+
+  return (
+    <div className="w-64 border-r border-sidebar-border bg-sidebar h-full flex flex-col">
+      <div className="h-16 flex items-center px-6 border-b border-sidebar-border">
+        <Activity className="h-6 w-6 text-primary neon-text-blue mr-2" />
+        <span className="font-bold text-lg tracking-tight text-sidebar-foreground">NullTrace</span>
+      </div>
+      
+      <div className="flex-1 py-6 px-3 flex flex-col gap-1 overflow-y-auto">
+        {navItems.map((item) => {
+          const isActive = location.startsWith(item.href);
+          const Icon = item.icon;
+          
+          return (
+            <Link key={item.href} href={item.href}>
+              <Button
+                variant={isActive ? "secondary" : "ghost"}
+                className={cn(
+                  "w-full justify-start text-sidebar-foreground/70 hover:text-sidebar-foreground",
+                  isActive && "bg-sidebar-accent text-sidebar-accent-foreground font-medium neon-border-blue border-l-2"
+                )}
+              >
+                <Icon className="mr-2 h-4 w-4" />
+                {item.label}
+              </Button>
+            </Link>
+          );
+        })}
+      </div>
+      
+      <div className="p-4 border-t border-sidebar-border">
+        <div className="flex items-center text-xs text-muted-foreground">
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-blink mr-2"></span>
+          System Online
+        </div>
+      </div>
+    </div>
+  );
+}
