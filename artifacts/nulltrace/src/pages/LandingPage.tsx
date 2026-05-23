@@ -13,8 +13,9 @@ export default function LandingPage() {
       </div>
 
       <header className="relative z-10 container mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <img src={logo} alt="NullTrace" className="h-8 w-auto" />
+          <span className="font-bold text-xl tracking-tight text-foreground">NullTrace</span>
         </div>
         <nav className="flex items-center gap-6">
           <Link href="/signin">

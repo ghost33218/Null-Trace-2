@@ -25,9 +25,10 @@ export function Sidebar() {
 
   return (
     <div className="w-64 border-r border-sidebar-border bg-sidebar h-full flex flex-col">
-      <div className="h-16 flex items-center px-5 border-b border-sidebar-border">
-        <Link href="/">
+      <div className="h-16 flex items-center px-5 border-b border-sidebar-border gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <img src={logo} alt="NullTrace" className="h-7 w-auto cursor-pointer" />
+          <span className="font-bold text-base tracking-tight text-sidebar-foreground">NullTrace</span>
         </Link>
       </div>
 

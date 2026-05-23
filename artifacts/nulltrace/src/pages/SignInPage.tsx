@@ -39,8 +39,11 @@ export default function SignInPage() {
 
       <div className="z-10 w-full max-w-md p-8 glass-card rounded-2xl border border-border shadow-2xl relative">
         <div className="flex flex-col items-center mb-8">
-          <img src={logo} alt="NullTrace" className="h-12 w-auto mb-4" />
-          <h1 className="text-2xl font-bold tracking-tight">Sign in to NullTrace</h1>
+          <div className="flex items-center gap-3 mb-4">
+            <img src={logo} alt="NullTrace" className="h-10 w-auto" />
+            <span className="text-2xl font-bold tracking-tight text-foreground">NullTrace</span>
+          </div>
+          <h1 className="text-xl font-semibold tracking-tight">Sign in to your account</h1>
           <p className="text-sm text-muted-foreground mt-2">Enter your credentials to access the war room</p>
         </div>
 
