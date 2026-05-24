@@ -270,4 +270,6 @@ MIT License
 
 ---
 
+**Due to free-tier/cloud limitations, the project is demonstrated locally in the demo video**
+
 Built with React, Express, PostgreSQL, and AI-powered observability workflows.
