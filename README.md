@@ -8,6 +8,10 @@ Inspired by modern observability platforms such as Grafana and Datadog.
 
 ---
 
+**Live Link : https://null-trace-final-nulltrace.vercel.app/**
+
+--
+
 # Features
 
 ## Incident Management
@@ -269,7 +273,5 @@ Submission includes:
 MIT License
 
 ---
-
-**Due to free-tier/cloud limitations, the project is demonstrated locally in the demo video**
 
 Built with React, Express, PostgreSQL, and AI-powered observability workflows.
