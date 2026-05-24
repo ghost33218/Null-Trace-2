@@ -1,6 +1,8 @@
 import { Router, type IRouter } from "express";
+import { eq } from "drizzle-orm";
 import { db, incidentsTable, timelineEventsTable } from "@workspace/db";
 import { logger } from "../lib/logger";
+import { generateRCA } from "../lib/ai-analysis";
 
 const router: IRouter = Router();
 
@@ -86,7 +88,6 @@ router.get("/monitoring/alerts", (_req, res): void => {
     status: "FIRING",
     firedAt: new Date(Date.now() - Math.random() * 30 * 60 * 1000).toISOString(),
   }));
-
   res.json({ alerts, total: alerts.length });
 });
 
@@ -127,6 +128,29 @@ router.post("/monitoring/simulate", async (_req, res): Promise<void> => {
       metric: template.metric,
       value: template.value,
     });
+
+    generateRCA({
+      title: template.title,
+      description: template.description,
+      affectedServices: template.affectedServices,
+      severity: template.severity,
+    })
+      .then(async (analysis) => {
+        await db
+          .update(incidentsTable)
+          .set({
+            rootCause: analysis.rootCause,
+            aiAnalysis: analysis.humanExplanation,
+            confidence: analysis.confidence,
+            suggestedCommands: analysis.suggestedCommands,
+            updatedAt: new Date(),
+          })
+          .where(eq(incidentsTable.id, incident.id));
+        logger.info({ incidentId: incident.id }, "Background RCA saved for simulated incident");
+      })
+      .catch((err) => {
+        logger.error({ err, incidentId: incident.id }, "Background RCA generation failed");
+      });
   } catch (err) {
     logger.error({ err }, "Failed to simulate monitoring alert");
     res.status(500).json({ error: "Failed to create incident from alert" });

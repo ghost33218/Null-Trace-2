@@ -18,12 +18,12 @@ export default function LandingPage() {
           <span className="font-bold text-xl tracking-tight text-foreground">NullTrace</span>
         </div>
         <nav className="flex items-center gap-3">
-          <Link href="/signin">
+          <Link href="/sign-in">
             <Button variant="ghost" size="sm">Sign In</Button>
           </Link>
-          <Link href="/dashboard">
+          <Link href="/sign-up">
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground neon-border-blue">
-              Launch Console
+              Get Started
             </Button>
           </Link>
         </nav>
@@ -44,15 +44,15 @@ export default function LandingPage() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Link href="/dashboard">
+          <Link href="/sign-in">
             <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-base bg-primary hover:bg-primary/90 text-primary-foreground neon-border-blue group">
               Enter Dashboard
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
-          <Link href="/signin">
+          <Link href="/sign-up">
             <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 text-base bg-card hover:bg-card/80 border-border">
-              <Terminal className="mr-2 h-4 w-4" /> Sign In
+              <Terminal className="mr-2 h-4 w-4" /> Create Account
             </Button>
           </Link>
         </div>

@@ -1,0 +1,3 @@
+- [Clerk + Tailwind v4 CSS](clerk-tailwind-css.md) — requires `@layer theme, base, clerk, components, utilities;` before `@import "tailwindcss"` + `optimize: false` in Tailwind vite plugin
+- [Clerk protected routes](clerk-routes.md) — use `<Show when="signed-in">` + `<Redirect to="/sign-in">` pattern; never throw on missing publishable key before Clerk is provisioned
+- [Async RCA pattern](async-rca.md) — generateRCA is fire-and-forget after incident creation; incident detail page auto-triggers analyze mutation if rootCause is absent
