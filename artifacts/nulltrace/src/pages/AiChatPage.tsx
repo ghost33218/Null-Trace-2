@@ -2,7 +2,7 @@ import { MainLayout } from "@/components/MainLayout";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { BrainCircuit, Send, User, Sparkles, Terminal, Zap } from "lucide-react";
+import { BrainCircuit, Send, User, Sparkles, Terminal, Activity } from "lucide-react";
 
 interface Message {
   role: "user" | "ai";
@@ -55,7 +55,7 @@ export default function AiChatPage() {
     {
       role: "ai",
       content:
-        "NullTrace AI initialized. I have full context on your current infrastructure state, logs, and recent incidents. I'm powered by Llama 3.3-70B via Groq — ask me anything about your systems.",
+        "NullTrace Intelligence initialized. I have full context on your current infrastructure state, active incidents, logs, and service metrics. Ask me anything about your systems.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -163,13 +163,8 @@ export default function AiChatPage() {
             <BrainCircuit className="h-6 w-6" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold tracking-tight">AI Assistant</h1>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 font-mono">
-                Llama 3.3-70B · Groq
-              </span>
-            </div>
-            <p className="text-muted-foreground text-sm">Real AI — context-aware infrastructure intelligence</p>
+            <h1 className="text-2xl font-bold tracking-tight">Intelligence Engine</h1>
+            <p className="text-muted-foreground text-sm">Context-aware infrastructure analysis and remediation</p>
           </div>
         </div>
 
@@ -267,11 +262,11 @@ export default function AiChatPage() {
 
             <div className="glass-card p-4 rounded-xl border border-primary/20 bg-primary/5">
               <div className="flex items-center gap-2 mb-2">
-                <Zap className="h-4 w-4 text-primary" />
-                <span className="text-xs font-semibold text-primary uppercase tracking-wider">Live AI</span>
+                <Activity className="h-4 w-4 text-primary" />
+                <span className="text-xs font-semibold text-primary uppercase tracking-wider">Live Context</span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Powered by Llama 3.3-70B on Groq — real-time streaming with full infrastructure context and conversation memory.
+                Analyzes your live incidents, metrics, and logs in real time. All responses are grounded in your current infrastructure state.
               </p>
             </div>
           </div>

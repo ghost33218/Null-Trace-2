@@ -79,10 +79,18 @@ export function Topbar() {
                 <div className="px-4 py-3 border-b border-border">
                   <p className="text-sm font-semibold">Demo User</p>
                   <p className="text-xs text-muted-foreground">demo@nulltrace.io</p>
+                  <p className="text-xs text-muted-foreground/60 mt-0.5">SRE Engineer</p>
                 </div>
                 <button
+                  onClick={() => { setShowProfile(false); setLocation("/team"); }}
+                  className="w-full flex items-center gap-2 px-4 py-3 text-sm hover:bg-muted/30 transition-colors text-foreground"
+                >
+                  <User className="h-4 w-4 text-muted-foreground" />
+                  My Profile
+                </button>
+                <button
                   onClick={handleSignOut}
-                  className="w-full flex items-center gap-2 px-4 py-3 text-sm text-destructive hover:bg-destructive/10 transition-colors"
+                  className="w-full flex items-center gap-2 px-4 py-3 text-sm text-destructive hover:bg-destructive/10 transition-colors border-t border-border"
                 >
                   <LogOut className="h-4 w-4" />
                   Sign out

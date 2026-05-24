@@ -13,6 +13,7 @@ import ServicesPage from "@/pages/ServicesPage";
 import MetricsPage from "@/pages/MetricsPage";
 import LogsPage from "@/pages/LogsPage";
 import AiChatPage from "@/pages/AiChatPage";
+import TeamPage from "@/pages/TeamPage";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/metrics" component={MetricsPage} />
       <Route path="/logs" component={LogsPage} />
       <Route path="/ai-chat" component={AiChatPage} />
+      <Route path="/team" component={TeamPage} />
       <Route component={NotFound} />
     </Switch>
   );

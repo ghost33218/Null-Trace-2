@@ -5,7 +5,8 @@ import {
   Cpu,
   LayoutDashboard,
   MessageSquare,
-  TerminalSquare
+  TerminalSquare,
+  Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,8 @@ const navItems = [
   { href: "/services", label: "Services", icon: Cpu },
   { href: "/metrics", label: "Metrics", icon: BarChart2 },
   { href: "/logs", label: "Logs", icon: TerminalSquare },
-  { href: "/ai-chat", label: "AI Assistant", icon: MessageSquare },
+  { href: "/ai-chat", label: "Intelligence", icon: MessageSquare },
+  { href: "/team", label: "Team", icon: Users },
 ];
 
 export function Sidebar() {
@@ -34,7 +36,7 @@ export function Sidebar() {
 
       <div className="flex-1 py-6 px-3 flex flex-col gap-1 overflow-y-auto">
         {navItems.map((item) => {
-          const isActive = location.startsWith(item.href);
+          const isActive = location === item.href || location.startsWith(item.href + "/");
           const Icon = item.icon;
 
           return (
@@ -56,7 +58,7 @@ export function Sidebar() {
 
       <div className="p-4 border-t border-sidebar-border">
         <div className="flex items-center text-xs text-muted-foreground">
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-blink mr-2"></span>
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-blink mr-2" />
           System Online
         </div>
       </div>

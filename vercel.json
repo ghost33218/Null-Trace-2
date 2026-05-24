@@ -1,11 +1,27 @@
 {
   "version": 2,
-  "buildCommand": "pnpm --filter @workspace/nulltrace run build",
-  "outputDirectory": "artifacts/nulltrace/dist/public",
-  "installCommand": "pnpm install",
-  "framework": null,
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" }
+  "builds": [
+    {
+      "src": "artifacts/nulltrace/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/public"
+      }
+    },
+    {
+      "src": "api/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/artifacts/nulltrace/dist/public/index.html"
+    }
   ],
   "env": {
     "BASE_PATH": "/",
